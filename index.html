@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somnath Computer Keshod</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH3dP6W4YB4Zz2oxEd4pqco3EQAOEjun9wO7FwRKIYYNP6calKZYpFYuZUCDq5ZPkNcaUVbn8NKiWkjOfE7wsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#0b1220;
+  color:#fff;
+  line-height:1.6;
+}
+
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(11,18,32,0.85);
+  backdrop-filter:blur(12px);
+  padding:20px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:0.3s;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+nav.scrolled{
+  padding:12px 60px;
+  background:#0b1220;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+}
+
+nav h2{
+  color:#fbbf24;
+  font-weight:700;
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:#fff;
+  font-size:15px;
+  transition:0.3s;
+  position:relative;
+}
+
+nav a:hover{
+  color:#fbbf24;
+}
+
+nav ul li a.active{
+  color:#fbbf24;
+}
+
+nav ul li a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:100%;
+  height:2px;
+  background:#fbbf24;
+}
+
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  background:linear-gradient(rgba(11,18,32,0.85), rgba(11,18,32,0.85)),
+             url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover no-repeat;
+}
+
+.hero-title{
+  font-size:56px;
+  font-weight:800;
+  color:#fbbf24;
+  margin-bottom:20px;
+}
+
+.hero-subtitle{
+  font-size:18px;
+  color:#cbd5e1;
+  max-width:750px;
+  margin:auto;
+}
+
+.hero-buttons{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn-main{
+  padding:14px 32px;
+  background:#fbbf24;
+  color:#000;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn-main:hover{
+  background:#f59e0b;
+  transform:translateY(-5px);
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  padding:100px 60px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.section:nth-child(even){
+  background:#111827;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:60px;
+  color:#fbbf24;
+  font-size:34px;
+  font-weight:700;
+  position:relative;
+}
+
+.section h2::after{
+  content:"";
+  width:60px;
+  height:3px;
+  background:#fbbf24;
+  display:block;
+  margin:12px auto 0;
+  border-radius:10px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* ================= CARDS ================= */
+
+.card{
+  background:#1e293b;
+  padding:35px;
+  border-radius:16px;
+  text-align:center;
+  transition:0.4s;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border:1px solid #fbbf24;
+  box-shadow:0 15px 35px rgba(251,191,36,0.15);
+}
+
+.card i{
+  font-size:45px;
+  color:#fbbf24;
+  margin-bottom:15px;
+}
+
+/* ================= STUDENTS ================= */
+
+.students{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+
+.student-card{
+  background:#1e293b;
+  border-radius:18px;
+  padding:30px;
+  text-align:center;
+  transition:0.4s;
+}
+
+.student-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+.student-image{
+  width:120px;
+  height:120px;
+  margin:auto;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid #fbbf24;
+  margin-bottom:20px;
+}
+
+.student-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.student-content h3{
+  color:#fbbf24;
+  margin-bottom:8px;
+}
+
+.project-title{
+  font-weight:600;
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+.playstore-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:15px;
+  padding:10px 22px;
+  background:#22c55e;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.playstore-btn:hover{
+  background:#16a34a;
+  transform:scale(1.05);
+}
+
+/* ================= CONTACT ================= */
+
+.contact-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+}
+
+.contact-info-box,
+.contact-form{
+  background:#1e293b;
+  padding:35px;
+  border-radius:16px;
+}
+
+.input-group{
+  margin-bottom:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:none;
+  background:#0b1220;
+  color:#fff;
+}
+
+.submit-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:#fbbf24;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.submit-btn:hover{
+  background:#f59e0b;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#0b1220;
+  padding:40px 20px;
+  text-align:center;
+  color:#94a3b8;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+.social-icons{
+  margin-top:10px;
+}
+
+.social-icons a{
+  margin:0 10px;
+  color:#fbbf24;
+  font-size:18px;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+
+.whatsapp-float{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:#fff;
+  font-size:26px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+.whatsapp-float:hover{
+  background:#1ebe5d;
+  transform:scale(1.1);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+  nav{
+    padding:15px 20px;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .hero-title{
+    font-size:34px;
+  }
+
+  .section{
+    padding:70px 20px;
+  }
+
+  .contact-wrapper{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Somnath Computer</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Somnath Computer Institute
+    </h1>
+
+    <p class="hero-subtitle">
+  Industry Ready IT Training | Live Projects | Internship Support | Professional Development
+</p>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="btn-main">
+        Explore Student Projects
+      </a>
+
+         </div>
+  </div>
+</section>
+<section id="vacation" class="section">
+  <h2>Summer / Vacation Special Batch</h2>
+
+  <div class="grid">
+
+    <!-- CCC -->
+    <div class="card">
+      <div class="badge">Limited Seats</div>
+      <i class="fas fa-desktop"></i>
+      <h3>CCC Course</h3>
+      <p>Complete basic computer training including MS Office, Internet, Email and Digital Skills.</p>
+      <p class="duration">Duration: 3 Months</p>
+
+      <a href="https://wa.me/919510339904?text=Hello%20I%20want%20to%20enroll%20in%20CCC%20Vacation%20Batch"
+         target="_blank"
+         class="enroll-btn">
+         Enroll Now
+      </a>
+    </div>
+
+    <!-- Tally -->
+    <div class="card">
+      <div class="badge">Job Oriented</div>
+      <i class="fas fa-calculator"></i>
+      <h3>Tally ERP with GST</h3>
+      <p>Professional accounting software training with GST billing, reports & real business practice.</p>
+      <p class="duration">Duration: 2 Months</p>
+
+      <a href="https://wa.me/919510339904?text=Hello%20I%20want%20to%20enroll%20in%20Tally%20ERP%20Vacation%20Batch"
+         target="_blank"
+         class="enroll-btn">
+         Enroll Now
+      </a>
+    </div>
+
+    <!-- AI -->
+    <div class="card">
+      <div class="badge">Trending Course</div>
+      <i class="fas fa-robot"></i>
+      <h3>Artificial Intelligence (AI)</h3>
+      <p>Introduction to AI, Machine Learning basics, Python practicals and project guidance.</p>
+      <p class="duration">Duration: 3 Months</p>
+
+      <a href="https://wa.me/919510339904?text=Hello%20I%20want%20to%20enroll%20in%20AI%20Vacation%20Batch"
+         target="_blank"
+         class="enroll-btn">
+         Enroll Now
+      </a>
+    </div>
+
+  </div>
+</section>
+<section id="projects" class="section">
+  <h2>Our Students' Apps on Google Play Store</h2>
+  <div class="students">
+
+    <!-- Student 1 -->
+    <div class="student-card">
+      <div class="student-image">
+        <img src="images/me.jpeg" alt="Sahil Khan Belim">
+      </div>
+      <div class="student-content">
+        <h3>Sahil Khan Belim</h3>
+        <p class="project-title">Truck Hisab App</p>
+        <p>Android based truck expense & trip management system available on Google Play Store.</p>
+
+        <a href="https://play.google.com/store/apps/details?id=com.taqdeer.taqdeertruckhisab"
+           target="_blank"
+           class="playstore-btn">
+           <i class="fab fa-google-play"></i>
+           View on Play Store
+        </a>
+      </div>
+    </div>
+
+    <!-- Student 2 -->
+    <div class="student-card">
+      <div class="student-image">
+        <img src="images/me.jpeg" alt="Faijal Shaikh">
+      </div>
+      <div class="student-content">
+        <h3>Faijal Shaikh</h3>
+        <p class="project-title">Billing Management System</p>
+        <p>.NET based billing software with invoice system.</p>
+
+        <a href="https://play.google.com/store/apps/details?id=com.taqdeer.taqdeertruckhisab"
+           target="_blank"
+           class="playstore-btn">
+           <i class="fab fa-google-play"></i>
+           View on Play Store
+        </a>
+      </div>
+    </div>
+
+    <!-- Student 3 -->
+    <div class="student-card">
+      <div class="student-image">
+        <img src="images/me.jpeg" alt="Imran Pathan">
+      </div>
+      <div class="student-content">
+        <h3>Imran Pathan</h3>
+        <p class="project-title">Attendance App</p>
+        <p>Firebase based student attendance Android application.</p>
+
+        <a href="https://play.google.com/store/apps/details?id=com.taqdeer.taqdeertruckhisab"
+           target="_blank"
+           class="playstore-btn">
+           <i class="fab fa-google-play"></i>
+           View on Play Store
+        </a>
+      </div>
+    </div>
+
+    <!-- Student 4 -->
+    <div class="student-card">
+      <div class="student-image">
+        <img src="images/me.jpeg" alt="Rizwan Sheikh">
+      </div>
+      <div class="student-content">
+        <h3>Rizwan Sheikh</h3>
+        <p class="project-title">School ERP</p>
+        <p>ASP.NET web-based school management system.</p>
+
+        <a href="https://play.google.com/store/apps/details?id=com.taqdeer.taqdeertruckhisab"
+           target="_blank"
+           class="playstore-btn">
+           <i class="fab fa-google-play"></i>
+           View on Play Store
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <div class="contact-wrapper">
+    <div class="contact-info-box">
+      <h3>Get In Touch</h3>
+
+      <p>
+        <i class="fas fa-location-dot"></i>
+        Junagadh, Gujarat
+      </p>
+
+      <p>
+        <i class="fas fa-phone"></i>
+        +91 95103 39904
+      </p>
+
+      <p>
+        <i class="fas fa-envelope"></i>
+        somnathcomputer@gmail.com
+      </p>
+    </div>
+
+    <form class="contact-form" onsubmit="return showMessage()">
+      <div class="input-group">
+        <input type="text" placeholder="Full Name" required>
+      </div>
+      <div class="input-group">
+        <input type="email" placeholder="Email Address" required>
+      </div>
+      <div class="input-group">
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+</section>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919510339904?text=Hello%20Somnath%20Computer,%20I%20want%20to%20enquire%20about%20courses."
+   class="whatsapp-float"
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<footer>
+  &copy 2026 Somnath Computer Institute | All Rights Reserved
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+</footer>
+
+<script>
+function showMessage(){
+  alert("Thank You! Your message has been sent successfully.");
+  return false;
+}
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.clientHeight;
+
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
