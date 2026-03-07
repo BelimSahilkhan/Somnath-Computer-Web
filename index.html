@@ -462,16 +462,17 @@ footer{
   cursor:pointer;
 }
 
-/* Mobile Menu */
-
 @media(max-width:768px){
+
+  nav{
+    padding:15px 20px;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+  }
 
   .menu-toggle{
     display:block;
-  }
-
-  nav{
-    flex-wrap:wrap;
   }
 
   .nav-menu{
@@ -490,6 +491,8 @@ footer{
   .nav-menu.active{
     display:flex;
   }
+
+}
 
 }
 </style>
@@ -597,7 +600,7 @@ footer{
         <img src="images/me.jpeg" alt="Sahil Khan Belim">
       </div>
       <div class="student-content">
-        <h3>Belim Sahilkhan</h3>
+        <h3>Sahilkhan Belim</h3>
         <p class="project-title">Taqdeer Truck Hisab</p>
         <p>Taqdeer Truck Hisab - a smart Android app for truck owners and drivers to manage trips, expenses, and transport accounts easily.</p>
 
@@ -613,7 +616,7 @@ footer{
     <!-- Student 2 -->
     <div class="student-card">
       <div class="student-image">
-        <img src="images/kunal.jpeg" alt="hi">
+        <img src="images/kunal.jpeg" alt="Faijal Shaikh">
       </div>
       <div class="student-content">
         <h3>Kunal Mokariya</h3>
@@ -697,7 +700,7 @@ footer{
     	
      <div class="student-card">
       <div class="student-image">
-        <img src="images/meet.jpeg" alt="">
+        <img src="images/meet.jpeg" alt="Rizwan Sheikh">
       </div>
       <div class="student-content">
         <h3>Barad Meet</h3>
@@ -844,7 +847,4 @@ toggle.addEventListener("click", () => {
 
 </body>
 
-
 </html>
-
-
