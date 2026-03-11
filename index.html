@@ -1018,51 +1018,13 @@ counters.forEach(counter=>{
 
   updateCounter();
 });
-const counters = document.querySelectorAll(".counter");
 
-let started = false;
-
-window.addEventListener("scroll", () => {
-
-const section = document.querySelector(".counter-section");
-
-const sectionTop = section.offsetTop - window.innerHeight;
-
-if(pageYOffset > sectionTop && !started){
-
-counters.forEach(counter => {
-
-const target = +counter.getAttribute("data-target");
-let count = 0;
-
-const updateCounter = () => {
-
-count += target / 100;
-
-if(count < target){
-counter.innerText = Math.ceil(count);
-requestAnimationFrame(updateCounter);
-}
-else{
-counter.innerText = target;
-}
-
-};
-
-updateCounter();
-
-});
-
-started = true;
-
-}
-
-});
 </script>
 
 </body>
 
 </html>
+
 
 
 
