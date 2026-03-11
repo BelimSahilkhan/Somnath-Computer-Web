@@ -998,25 +998,43 @@ document.querySelectorAll(".fade-in").forEach(el=>{
 });
 const counters = document.querySelectorAll(".counter");
 
-counters.forEach(counter=>{
-  counter.innerText="0";
+let started = false;
 
-  const updateCounter=()=>{
-    const target=+counter.getAttribute("data-target");
-    const c=+counter.innerText;
+window.addEventListener("scroll", () => {
 
-    const increment=target/100;
+const section = document.querySelector(".counter-section");
 
-    if(c<target){
-      counter.innerText=`${Math.ceil(c+increment)}`;
-      setTimeout(updateCounter,20);
-    }
-    else{
-      counter.innerText=target;
-    }
-  };
+const sectionTop = section.offsetTop - window.innerHeight;
 
-  updateCounter();
+if(pageYOffset > sectionTop && !started){
+
+counters.forEach(counter => {
+
+const target = +counter.getAttribute("data-target");
+let count = 0;
+
+const updateCounter = () => {
+
+count += target / 100;
+
+if(count < target){
+counter.innerText = Math.ceil(count);
+requestAnimationFrame(updateCounter);
+}
+else{
+counter.innerText = target;
+}
+
+};
+
+updateCounter();
+
+});
+
+started = true;
+
+}
+
 });
 
 </script>
@@ -1024,6 +1042,7 @@ counters.forEach(counter=>{
 </body>
 
 </html>
+
 
 
 
