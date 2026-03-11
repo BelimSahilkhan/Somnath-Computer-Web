@@ -536,6 +536,10 @@ footer{
   margin-top:10px;
   color:#cbd5e1;
 }
+.counter::after{
+  content:"+";
+  margin-left:2px;
+}
 .batch-desc{
 max-width:700px;
 margin:0 auto 40px;
@@ -639,30 +643,32 @@ line-height:1.7;
 
   </div>
 </section>
-<section class="counter-section">
+<section class="counter-section fade">
+
   <div class="counter-container">
 
     <div class="counter-box">
-      <h2 class="counter" data-target="500+">0</h2>
+      <h2 class="counter" data-target="500">0</h2>
       <p>Students Trained</p>
     </div>
 
     <div class="counter-box">
-      <h2 class="counter" data-target="50+">0</h2>
+      <h2 class="counter" data-target="50">0</h2>
       <p>Projects Completed</p>
     </div>
 
     <div class="counter-box">
-      <h2 class="counter" data-target="10+">0</h2>
+      <h2 class="counter" data-target="10">0</h2>
       <p>Apps on Play Store</p>
     </div>
 
     <div class="counter-box">
-      <h2 class="counter" data-target="6+">0</h2>
+      <h2 class="counter" data-target="6">0</h2>
       <p>Years Experience</p>
     </div>
 
   </div>
+
 </section>
 <section id="batch2025" class="section fade">
 
@@ -1012,11 +1018,52 @@ counters.forEach(counter=>{
 
   updateCounter();
 });
+const counters = document.querySelectorAll(".counter");
+
+let started = false;
+
+window.addEventListener("scroll", () => {
+
+const section = document.querySelector(".counter-section");
+
+const sectionTop = section.offsetTop - window.innerHeight;
+
+if(pageYOffset > sectionTop && !started){
+
+counters.forEach(counter => {
+
+const target = +counter.getAttribute("data-target");
+let count = 0;
+
+const updateCounter = () => {
+
+count += target / 100;
+
+if(count < target){
+counter.innerText = Math.ceil(count);
+requestAnimationFrame(updateCounter);
+}
+else{
+counter.innerText = target;
+}
+
+};
+
+updateCounter();
+
+});
+
+started = true;
+
+}
+
+});
 </script>
 
 </body>
 
 </html>
+
 
 
 
