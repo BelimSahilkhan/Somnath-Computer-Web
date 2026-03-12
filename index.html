@@ -561,6 +561,31 @@ transition:all 0.8s ease;
 opacity:1;
 transform:translateY(0);
 }
+
+  .heart{
+color:red;
+display:inline-block;
+animation:heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+0%{
+transform:scale(1);
+}
+25%{
+transform:scale(1.2);
+}
+50%{
+transform:scale(1);
+}
+75%{
+transform:scale(1.2);
+}
+100%{
+transform:scale(1);
+}
+}
+  
 </style>
 </head>
 
@@ -1055,7 +1080,9 @@ View Project
 </a>
 
 <footer>
-  &copy 2026 Somnath Computer Institute | All Rights Reserved | Developed by Belim Sahilkhan
+  <div class="footer-bottom">&copy 2026 Somnath Computer Institute | All Rights Reserved | 
+Developed with <span class="heart">❤</span> by <b>Belim Sahilkhan</b>
+  </div>
   <div class="social-icons">
     <a href="#"><i class="fab fa-facebook"></i></a>
     <a href="https://www.instagram.com/somnath_computer_bca?igsh=MW9iY3cxdGo4c3hpcw=="><i class="fab fa-instagram"></i></a>
@@ -1192,6 +1219,7 @@ appearOnScroll.observe(fader);
 </body>
 
 </html>
+
 
 
 
