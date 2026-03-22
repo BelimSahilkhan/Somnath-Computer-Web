@@ -1369,14 +1369,11 @@ appearOnScroll.observe(fader);
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("closePopup");
 
-// SHOW ONLY ONCE
+// ALWAYS SHOW ON LOAD (every refresh)
 window.addEventListener("load", () => {
-  if(!localStorage.getItem("popupShown")){
-    setTimeout(() => {
-      popup.classList.add("active");
-      localStorage.setItem("popupShown", "true");
-    }, 800);
-  }
+  setTimeout(() => {
+    popup.classList.add("active");
+  }, 800);
 });
 
 // CLOSE BUTTON
